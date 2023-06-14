@@ -3,18 +3,28 @@ import 'package:flutter/material.dart';
 
 class HeaderButton extends StatelessWidget {
 
-  String label;
+  String? label;
+  String? iconPath;
 
-  HeaderButton(this.label);
+  HeaderButton({this.label, this.iconPath});
+
+  Widget checkButton(){
+    // Si icon path est renseignée, alors afficher un icon button
+    if (this.iconPath != null){
+      return IconButton(onPressed: () {}, icon: Image.asset(this.iconPath!));
+    }
+    // Sinon par défaut le text habituel
+    return Text(
+      this.label!,
+      textAlign: TextAlign.center,
+      style: TextStyle(color: Colors.white),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-       child: Text(
-         this.label,
-         textAlign: TextAlign.center,
-         style: TextStyle(color: Colors.white),
-       ));
+       child: checkButton());
   }
 
 }
@@ -29,9 +39,9 @@ class Header extends  StatelessWidget{
         child: Flex(
           direction: Axis.horizontal,
           children: [
-            HeaderButton("Nouveau"),
-            HeaderButton("Accueil"),
-            HeaderButton("Footer"),
+            HeaderButton(iconPath : "/images/pencil.png"),
+            HeaderButton(label : "Accueil"),
+            HeaderButton(iconPath: "/images/search.png",),
           ],
         ),
       ),
