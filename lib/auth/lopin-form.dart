@@ -11,39 +11,11 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   var formKey = GlobalKey<FormState>();
 
-  /**
-   * Pour l'instant afficher une dialogue box
-   */
-  void displaySuccessDialog(){
-    showDialog<String>(
-      context: context,
-      builder: (BuildContext context) => Dialog(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text('Connexion réussi'),
-              const SizedBox(height: 15),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('Ok'),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
   void onSubmit() {
     // Contrôle de surface
     if (formKey.currentState!.validate()) {
       // Connexion reussi
-      displaySuccessDialog();
+      Navigator.pushNamed(context, "/tweet");
     }
 
   }
