@@ -10,7 +10,7 @@ class TPTwitterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: "/",
+      initialRoute: "/tweet",
       routes: {
         "/": (context) => LoginPage(),
         "/tweet": (context) => TweetPage()
